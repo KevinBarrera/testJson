@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>JSON and AJAX</title>
     <link rel="stylesheet" type="text/css" href="css/styless.css">
     <script type="text/javascript">
         function loadData(){
+            // crear una petición
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://gitlab.com/KevinBarreraHer/testjason/test.json");
 
+            // procesar la petición
+            xhr.onload = () => {
+                if(this.readyState === 4 && this.status === 200){
+                    //cambiar texto
+
+                    //esconder el botón
+                } else {
+                    //la información no llegó
+                    alert("ERROR: " + this.status);
+                }
+            }
+            //modificar contenido
         }
     </script>
 </head>
