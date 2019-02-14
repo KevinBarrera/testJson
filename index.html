@@ -12,13 +12,20 @@
             xhr.onreadystatechange = function(){
                 console.log(this.readyState, this.status, this.statusText);
             };
-
             // procesar la petición
             xhr.onload = function(){
                 if(this.readyState === 4 && this.status === 200){
-                    //cambiar texto
-                    console.log("CAMBIANDO TEXTO");
-                    //esconder el botón
+                    // cambiar texto
+                    let data = JSON.parse(this.responseText);
+                    let emptyDiv = document.getElementById("loaded-info");
+                    let html = '';
+                    data.forEach(function(persona){
+                        html += '<p>'
+                            html += persona.nombre + ' ' + persona.apellido;
+                        html += '</p>'
+                    });
+                    emptyDiv.insertAdjacentHTML('beforeend', html);
+                    // esconder el botón
                 } else {
                     //la información no llegó
                     alert("ERROR: " + this.status);
