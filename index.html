@@ -9,19 +9,22 @@
             // crear una petición
             let xhr = new XMLHttpRequest();
             xhr.open("GET", "https://gitlab.com/KevinBarreraHer/testjason/test.json");
+            xhr.onreadystatechange = ()=>{
+                console.log(this.readyState, this.status, this.statusText);
+            };
 
             // procesar la petición
             xhr.onload = () => {
                 if(this.readyState === 4 && this.status === 200){
                     //cambiar texto
-
+                    console.log("CAMBIANDO TEXTO");
                     //esconder el botón
                 } else {
                     //la información no llegó
                     alert("ERROR: " + this.status);
                 }
             }
-            //modificar contenido
+            //enviar la petición
         }
     </script>
 </head>
