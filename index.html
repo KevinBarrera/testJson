@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>JSON and AJAX</title>
@@ -9,12 +9,12 @@
             // crear una petición
             let xhr = new XMLHttpRequest();
             xhr.open("GET", "https://gitlab.com/KevinBarreraHer/testjason/test.json");
-            xhr.onreadystatechange = ()=>{
+            xhr.onreadystatechange = function(){
                 console.log(this.readyState, this.status, this.statusText);
             };
 
             // procesar la petición
-            xhr.onload = () => {
+            xhr.onload = function(){
                 if(this.readyState === 4 && this.status === 200){
                     //cambiar texto
                     console.log("CAMBIANDO TEXTO");
