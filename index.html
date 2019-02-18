@@ -42,14 +42,14 @@
         function createCat(){
              // crear una petición
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://10.24.43.221:3000/kittens");
+            xhr.open("POST", "http://10.24.43.221:3000/kittens");
             xhr.setRequestHeader("content-type", "application/json");
             xhr.onload = ()=>{
-                if(this.readyState === 4 && this.status === 200){
+                /*if(this.readyState === 4 && this.status === 200){
                     alert();
                 } else {
 
-                }
+                }*/
             };
 
             xhr.onerror = ()=>{
@@ -90,8 +90,8 @@
         <input type="text" id="color">
         <div>Owner</div>
         <input type="text" id="owner">
+        <input type="checkbox" id="explodes"><br>
         <button type="button" onclick="createCat()">Crear un gato</button>
-        <input type="checkbox" id="explodes"> 
     </form>
 </body>
 </html>
