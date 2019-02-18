@@ -21,7 +21,7 @@
                     let html = '';
                     data.forEach(function(persona){
                         html += '<p>'
-                            html += persona.nombre + ' ' + persona.apellido;
+                                html += persona.nombre + ' ' + persona.apellido;
                         html += '</p>'
                     });
                     emptyDiv.insertAdjacentHTML('beforeend', html);
@@ -30,16 +30,68 @@
                     //la información no llegó
                     alert("ERROR: " + this.status);
                 }
+            };
+            // lanzar una alerta con un error
+            xhr.onerror = ()=>{
+                alert("La conexión ha fallado");
             }
             //enviar la petición
             xhr.send();
         }
+
+        function createCat(){
+             // crear una petición
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://10.24.43.221:3000/kittens");
+            xhr.setRequestHeader("content-type", "application/json");
+            xhr.onload = ()=>{
+                if(this.readyState === 4 && this.status === 200){
+                    alert();
+                } else {
+
+                }
+            };
+
+            xhr.onerror = ()=>{
+                alert("La conexión ha fallado");
+            };
+
+            let name = document.getElementById('name').value;
+            let cuteness = document.getElementById('cuteness').value;
+            let color = document.getElementById('color').value;
+            let owner = document.getElementById('owner').value;
+            let explodes = document.getElementById('explodes').checked;
+
+            let obj = {name, cuteness, color, owner, explodes};
+
+            let data = JSON.stringify(obj);
+            console.log(obj);
+            console.log(data);
+
+            xhr.send(data);
+        }
+
     </script>
 </head>
 <body>
+    <!--Ejemplo de GET-->
     <h1>JSON y AJAX</h1>
     <h3>Permitir que AJAX modifique el contenido</h3>
     <button id="btn" type="button" onclick="loadData()">Mostrar información sin recargar la pantalla</button>
     <div id="loaded-info"></div>
+
+    <!--Ejemplo de POST-->
+    <form action="">
+        <div>Name</div>
+        <input type="text" id="name">
+        <div>Cuteness</div>
+        <input type="text" id="cuteness">
+        <div>Color</div>
+        <input type="text" id="color">
+        <div>Owner</div>
+        <input type="text" id="owner">
+        <button type="button" onclick="createCat()">Crear un gato</button>
+        <input type="checkbox" id="explodes"> 
+    </form>
 </body>
 </html>
